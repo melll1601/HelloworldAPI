@@ -33,4 +33,27 @@ public class UserRepo {
         }
         return lista;
     }
+
+    public void adicionarUser(Usuario usuario) throws SQLException{
+
+        String query = """
+                INSERT into
+                `User` (nome, email)
+                VALUES (?, ?)
+                """;
+
+        try(Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement(query)){
+
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getEmail());
+            stmt.executeUpdate();
+
+            System.out.println("Usuário Adicionado");
+
+        }catch (SQLException error){
+            error.printStackTrace();
+        }
+    }
+
 }

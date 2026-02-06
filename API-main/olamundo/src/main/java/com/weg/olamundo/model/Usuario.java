@@ -16,6 +16,10 @@ public class Usuario {
         this.email = email;
     }
 
+    public Usuario() {
+        // construtor vazio OBRIGATÓRIO
+    }
+
     public int getId() {
         return id;
     }
